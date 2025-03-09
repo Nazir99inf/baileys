@@ -1,5 +1,5 @@
 {
-  "name": "@nstar/baileys",
+  "name": "Nazir99inf/baileys",
   "version": "6.8.1",
   "description": "WhatsApp API",
   "keywords": [
@@ -12,9 +12,9 @@
     "automation",
     "multi-device"
   ],
-  "homepage": "https://github.com/nstar-y/Bail",
+  "homepage": "https://github.com/Nazir99inf/baileys",
   "repository": {
-    "url": "git+ssh://git@github.com/nstar-y/Bail.git"
+    "url": "git+ssh://git@github.com/Nazir99inf/baileys.git"
   },
   "license": "MIT",
   "author": "Adhiraj Singh",
@@ -71,7 +71,7 @@
     "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.0.0",
     "jest": "^27.0.6",
-    "jimp": "^0.16.1",
+    "jimp": "^0.22.12",
     "json": "^11.0.0",
     "link-preview-js": "^3.0.0",
     "open": "^8.4.2",
@@ -84,7 +84,7 @@
     "typescript": "^4.6.4"
   },
   "peerDependencies": {
-    "jimp": "^0.16.1",
+    "jimp": "^0.22.12",
     "link-preview-js": "^3.0.0",
     "qrcode-terminal": "^0.12.0",
     "sharp": "^0.32.6"
@@ -105,6 +105,6 @@
   },
   "packageManager": "yarn@1.22.19",
    "engines": {
-     "node": ">=20.0.0"
+     "node": ">=18.0.0"
    }
 }
