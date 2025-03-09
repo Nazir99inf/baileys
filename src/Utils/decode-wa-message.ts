@@ -1,6 +1,6 @@
 import { Boom } from '@hapi/boom'
-import { Logger } from 'pino'
 import { proto } from '../../WAProto'
+import { ILogger } from './logger'
 import { SignalRepository, WAMessageKey } from '../Types'
 import { areJidsSameUser, BinaryNode, isJidBroadcast, isJidGroup, isJidNewsletter, isJidStatusBroadcast, isJidUser, isLidUser } from '../WABinary'
 import { unpadRandomMax16 } from './generics'
@@ -142,7 +142,7 @@ export const decryptMessageNode = (
 	meId: string,
 	meLid: string,
 	repository: SignalRepository,
-	logger: Logger
+	logger: ILogger
 ) => {
 	const { fullMessage, author, sender } = decodeMessageNode(stanza, meId, meLid)
 	return {
@@ -155,7 +155,7 @@ export const decryptMessageNode = (
 				for(const { tag, attrs, content } of stanza.content) {
 					if(tag === 'verified_name' && content instanceof Uint8Array) {
 						const cert = proto.VerifiedNameCertificate.decode(content)
-						const details = proto.VerifiedNameCertificate.Details.decode(cert.details)
+						const details = proto.VerifiedNameCertificate.Details.decode(cert.details!)
 						fullMessage.verifiedBizName = details.verifiedName
 					}
 

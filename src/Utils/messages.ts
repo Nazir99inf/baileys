@@ -2,9 +2,9 @@ import { Boom } from '@hapi/boom'
 import axios from 'axios'
 import { randomBytes } from 'crypto'
 import { promises as fs } from 'fs'
-import { Logger } from 'pino'
 import { type Transform } from 'stream'
 import { proto } from '../../WAProto'
+import { ILogger } from './logger'
 import { MEDIA_KEYS, URL_REGEX, WA_DEFAULT_EPHEMERAL } from '../Defaults'
 import {
 	AnyMediaMessageContent,
@@ -336,7 +336,6 @@ export const generateWAMessageContent = async(
 		}
 
 		if(urlInfo) {
-			(extContent as any).canonicalUrl = urlInfo['canonical-url']
 			extContent.matchedText = urlInfo['matched-text']
 			extContent.jpegThumbnail = urlInfo.jpegThumbnail
 			extContent.description = urlInfo.description
@@ -1115,7 +1114,7 @@ export const aggregateMessageKeysNotFromMe = (keys: proto.IMessageKey[]) => {
 
 type DownloadMediaMessageContext = {
 	reuploadRequest: (msg: WAMessage) => Promise<WAMessage>
-	logger: Logger
+	logger: ILogger
 }
 
 const REUPLOAD_REQUIRED_STATUS = [410, 404]
